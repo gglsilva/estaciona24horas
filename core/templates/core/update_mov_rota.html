@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Estacionamento 24 Horas - Rotativo</title>
+    <title>Estacionamento 24 Horas - Rotativo atualizar</title>
 </head>
 <body>
+
+<h2>Updating Movimento Rotativo: {{ movrotativo }}</h2>
+
+
+<form action="{% url 'core_upd_mov_rota' movrotativo.id %}" method="POST">
+	{% csrf_token %}
+
+	{{ form.as_p }}
+
+	<button type="submit">Atualizar</button>
+</form>
+
+<a href="{% url 'core_del_mov_rota' movrotativo.id %}">Deletar</a>
 
 </body>
 </html>

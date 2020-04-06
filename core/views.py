@@ -8,7 +8,12 @@ from .models import (
 )
 
 
-from .forms import PessoaForm, VeiculoForm, MovRotativoForm
+from .forms import(
+    PessoaForm,
+    VeiculoForm,
+    MovRotativoForm,
+    MensalistaForm,
+    MovMensalistaForm)
 
 
 def Home(request):
@@ -120,3 +125,21 @@ def upd_mov_rota(request, id):
 
     else:
         return render(request, 'core/update_mov_rota.html', data)
+
+
+def del_mov_rota(request, id):
+    rotativo = MovRotativo.objects.get(id=id)
+    if request.method == "POST":
+        rotativo.delete()
+        return redirect('core_lista_mov_rota')
+    else:
+        return render(request, 'core/del_conf_mrot.html', {'obj': rotativo})
+
+
+# Mensalista
+
+def lista_mensalista(request):
+    mensalista = Mensalista.objects.all()
+    form = MensalistaForm()
+    data = {'mensalista': mensalista, 'form': form}
+    return render(request, 'core/lista_mensalista.html', data)

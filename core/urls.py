@@ -12,6 +12,8 @@ from .views import (
     lista_mov_rota,
     add_mov_rota,
     upd_mov_rota,
+    del_mov_rota,
+    lista_mensalista,
 )
 
 urlpatterns = [
@@ -34,5 +36,8 @@ urlpatterns = [
     url(r'^add-mov-rota/$', add_mov_rota, name='core_add_mov_rota'),
     url(r'^upd-mov-rota/(?P<id>\d+)/$', upd_mov_rota,
         name='core_upd_mov_rota'),
+    url(r'^del-mov-rota/(?P<id>\d+)/$', del_mov_rota, name='core_del_mov_rota'),
 
+    # Mensalista
+    url(r'^list-mensalista/$', lista_mensalista, name='core_lista_mensalista'),
 ]
