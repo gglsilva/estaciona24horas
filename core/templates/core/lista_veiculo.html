@@ -2,26 +2,25 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de Pessoa</title>
+    <title>Veiculos</title>
 </head>
 <body>
-<h2>Lista de Pessoas</h2>
-
-
+<h2>Lista de Veiculos</h2>
 <ul>
-{% for pessoa in pessoas %}
+{% for veiculo in veiculo %}
     <li>
-    	 <a href="{% url 'core_upd_pessoa' pessoa.id %}"> {{ pessoa.nome }} </a>
+        <a href="{% url 'core_upd_veiculo' veiculo.id%}">{{ veiculo.placa }}</a>
     </li>
 {% endfor %}
 </ul>
 
-<form action="{% url 'core_add_pessoa' %}" method="POST">
+<form action="{% url 'core_add_veiculo' %}" method="POST">
     {% csrf_token %}
 
     {{ form.as_p }}
 
     <button type="submit">Cadastrar</button>
 </form>
+
 </body>
 </html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Estacionamento 24 Horas - Rotativo</title>
+</head>
+<body>
+<h2>Rotativo</h2>
+
+
+<ul>
+{% for rotativo in mov_rotativo %}
+    <li> {{ rotativo.checkin }} - {{ rotativo.veiculo.placa }} </li>
+{% endfor %}
+</ul>
+
+
+<form action="{% url 'core_add_mov_rota' %}" method="POST">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">Cadastrar</button>
+</form>
+
+</body>
+</html>
